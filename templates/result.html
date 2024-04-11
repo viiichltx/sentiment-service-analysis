@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sentiment Analysis Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .result {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #f2f2f2;
+            border-radius: 4px;
+        }
+        
+        .result p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        
+        .result h2 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .result ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .result li {
+            font-size: 16px;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .result li strong {
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .result li span {
+            float: right;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        
+        .result li .positive {
+            background-color: #4caf50;
+            color: #fff;
+        }
+        
+        .result li .neutral {
+            background-color: #2196f3;
+            color: #fff;
+        }
+        
+        .result li .negative {
+            background-color: #f44336;
+            color: #fff;
+        }
+        
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #4caf50;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+        }
+        
+        .button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sentiment Analysis Results</h1>
+        <div class="result">
+            <p><strong>Input Text:</strong> {{ input_text }}</p>
+            <h2>Predicted Sentiment:</h2>
+            <ul>
+                <li>
+                    <strong>Price:</strong>
+                    <span class="{{ 'positive' if sentiment['label_price'] == 'Positive' else 'neutral' if sentiment['label_price'] == 'Neutral' else 'negative' }}">
+                        {{ sentiment['label_price'] }}
+                    </span>
+                </li>
+                <li>
+                    <strong>Service:</strong>
+                    <span class="{{ 'positive' if sentiment['label_service'] == 'Positive' else 'neutral' if sentiment['label_service'] == 'Neutral' else 'negative' }}">
+                        {{ sentiment['label_service'] }}
+                    </span>
+                </li>
+                <li>
+                    <strong>Convenience:</strong>
+                    <span class="{{ 'positive' if sentiment['label_convenience'] == 'Positive' else 'neutral' if sentiment['label_convenience'] == 'Neutral' else 'negative' }}">
+                        {{ sentiment['label_convenience'] }}
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <a href="/" class="button">Go Back to Home</a>
+    </div>
+</body>
+</html>
